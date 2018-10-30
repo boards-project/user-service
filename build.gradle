@@ -16,6 +16,7 @@ compileKotlin {
         jvmTarget = "1.8"
     }
 }
+
 compileTestKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
@@ -47,7 +48,13 @@ dependencies {
     //testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
     //testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "junit", module: "junit" 
+    }
 }
 
 /*
@@ -58,6 +65,13 @@ dependencyManagement {
     }
 }
 */
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = "4.10.2"
