@@ -1,0 +1,38 @@
+plugins {
+    id "idea"
+    id "java"
+    id "com.google.protobuf" version "0.8.6"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+def grpcVersion = "1.16.1"
+
+dependencies {
+    implementation("com.google.api.grpc:proto-google-common-protos:1.0.0")
+    implementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
+    implementation("io.grpc:grpc-protobuf:${grpcVersion}")
+    implementation("io.grpc:grpc-stub:${grpcVersion}")
+
+    testImplementation("io.grpc:grpc-testing:${grpcVersion}") {
+        exclude group: "junit", module: "junit"
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.6.1"
+    }
+    //noinspection GroovyAssignabilityCheck
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet("main")*.plugins {
+            grpc {}
+        }
+    }
+}

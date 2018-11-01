@@ -1,1 +1,4 @@
-rootProject.name = 'user'
+rootProject.name = "user"
+
+include "api"
+include "server"
