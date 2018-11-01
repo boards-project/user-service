@@ -5,15 +5,8 @@ plugins {
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
 }
 
-compileKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
-        jvmTarget = "1.8"
-    }
-}
-
-compileTestKotlin {
-    kotlinOptions {
+[compileKotlin, compileTestKotlin].each {
+    it.kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
         jvmTarget = "1.8"
     }
