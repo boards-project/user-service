@@ -1,4 +1,4 @@
-rootProject.name = "user"
+rootProject.name = "user-service"
 
-include "api"
-include "server"
+include "user-service-api"
+include "user-service-backend"
