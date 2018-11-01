@@ -7,7 +7,7 @@ plugins {
     id "com.google.protobuf" version "0.8.6"
 }
 
-group = "org.board-project"
+group = "org.board-project.user"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

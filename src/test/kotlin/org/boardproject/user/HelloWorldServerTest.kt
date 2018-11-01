@@ -1,4 +1,4 @@
-package org.boardproject.userservice
+package org.boardproject.user
 
 import io.grpc.ManagedChannel
 import io.grpc.Server
