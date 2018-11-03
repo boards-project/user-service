@@ -3,10 +3,10 @@ package org.boardproject.userservice
 import io.grpc.BindableService
 import io.grpc.Server
 import io.grpc.ServerBuilder
-import io.grpc.examples.helloworld.GreeterGrpc
-import io.grpc.examples.helloworld.HelloReply
-import io.grpc.examples.helloworld.HelloRequest
 import io.grpc.stub.StreamObserver
+import org.boardproject.userservice.api.GreeterGrpc
+import org.boardproject.userservice.api.HelloReply
+import org.boardproject.userservice.api.HelloRequest
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
