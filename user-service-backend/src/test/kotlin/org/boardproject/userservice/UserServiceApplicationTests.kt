@@ -1,4 +1,4 @@
-package org.boardproject.user
+package org.boardproject.userservice
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
