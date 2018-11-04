@@ -32,8 +32,8 @@ dependencies {
         exclude group: "junit", module: "junit"
     }
 
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0"
-    testCompile 'org.mockito:mockito-junit-jupiter:2.23.0'
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:2.23.0")
 }
 
 test {
