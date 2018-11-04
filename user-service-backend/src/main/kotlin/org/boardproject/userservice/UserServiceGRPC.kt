@@ -9,26 +9,21 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
-data class UserServiceGRPC(private val userRepository: UserRepository) : ReactorUserServiceGrpc.UserServiceImplBase() {
+data class UserServiceGRPC(
+        private val userRepository: UserRepository,
+        private val userReplyTranslator: UserReplyTranslator
+) : ReactorUserServiceGrpc.UserServiceImplBase() {
 
     override fun findAll(request: Mono<FindAllRequest>): Flux<UserReply> {
         return userRepository.findAll()
                 .map {
-                    UserReply.newBuilder()
-                            .setId(it.id)
-                            .setUsername(it.username)
-                            .build()
+                    userReplyTranslator.translate(it)
                 }
     }
 
     override fun findOne(request: Mono<FindOneRequest>): Mono<UserReply> {
         return request.map { it.id }
                 .flatMap { userRepository.findById(it) }
-                .map {
-                    UserReply.newBuilder()
-                            .setId(it.id)
-                            .setUsername(it.username)
-                            .build()
-                }
+                .map { userReplyTranslator.translate(it) }
     }
 }
