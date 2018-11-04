@@ -9,14 +9,28 @@ import org.boardproject.userservice.api.FindAllRequest
 import org.boardproject.userservice.api.FindOneRequest
 import org.boardproject.userservice.api.UserReply
 import org.boardproject.userservice.api.UserServiceGrpc
+import org.boardproject.userservice.model.User
+import org.boardproject.userservice.repository.UserRepository
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.jupiter.MockitoExtension
+import reactor.core.publisher.toFlux
+import reactor.core.publisher.toMono
+import java.util.*
 import java.util.concurrent.TimeUnit
 
-class UserServiceTest {
+@ExtendWith(MockitoExtension::class)
+class UserServiceGRPCTest {
     private lateinit var server: Server
     private lateinit var channel: ManagedChannel
+
+    @Mock
+    private lateinit var userRepositoryMock: UserRepository
 
     @BeforeEach
     internal fun setUp() {
@@ -25,7 +39,7 @@ class UserServiceTest {
         server = InProcessServerBuilder
                 .forName(serverName)
                 .directExecutor()
-                .addService(UserService())
+                .addService(UserServiceGRPC(userRepositoryMock))
                 .build()
                 .start()
 
@@ -54,6 +68,15 @@ class UserServiceTest {
 
     @Test
     fun findAll() {
+        `when`(userRepositoryMock.findAll())
+                .thenReturn(
+                        Arrays.asList(
+                                User("1", "eugene.karanda"),
+                                User("2", "irina.krivenko")
+
+                        ).toFlux()
+                )
+
         val blockingStub = UserServiceGrpc.newBlockingStub(channel)
         val reply = blockingStub.findAll(FindAllRequest.getDefaultInstance())
 
@@ -68,10 +91,18 @@ class UserServiceTest {
                                 .setUsername("irina.krivenko")
                                 .build()
                 )
+
+        verify(userRepositoryMock).findAll()
     }
 
     @Test
     fun findOne() {
+        `when`(userRepositoryMock.findById("1"))
+                .thenReturn(
+                        User("1", "eugene.karanda")
+                                .toMono()
+                )
+
         val blockingStub = UserServiceGrpc.newBlockingStub(channel)
         val reply = blockingStub.findOne(
                 FindOneRequest.newBuilder()
@@ -86,5 +117,7 @@ class UserServiceTest {
                                 .setUsername("eugene.karanda")
                                 .build()
                 )
+
+        verify(userRepositoryMock).findById("1")
     }
 }

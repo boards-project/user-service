@@ -18,6 +18,7 @@ targetCompatibility = 1.8
 dependencies {
     compile project(":user-service-api")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -26,10 +27,12 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
-
+    
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: "junit", module: "junit"
     }
+
+    testCompile 'org.mockito:mockito-junit-jupiter:2.23.0'
 }
 
 test {
