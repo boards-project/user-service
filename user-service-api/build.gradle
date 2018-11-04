@@ -2,7 +2,11 @@ plugins {
     id "idea"
     id "java"
     id "com.google.protobuf" version "0.8.6"
+    id "maven-publish"
+    id "com.jfrog.bintray" version "1.8.4"
 }
+
+version = project.property("api.version")
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -43,3 +47,5 @@ protobuf {
         }
     }
 }
+
+apply from: rootProject.file("gradle/publish-bintray.gradle")

@@ -1,0 +1,54 @@
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+if (project.hasProperty("bintray.user")) {
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact sourcesJar
+                artifact javadocJar
+                groupId project.group
+                artifactId project.name
+                version project.version
+                pom.withXml {
+                    def root = asNode()
+                    root.appendNode("name", project.name)
+                    root.appendNode("url", "https://github.com/boards-project/user-service")
+                }
+            }
+        }
+    }
+
+    bintray {
+        user = project.property("bintray.user")
+        key = project.property("bintray.key")
+        publications = ["mavenJava"]
+
+        pkg {
+            repo = "boards-project"
+            name = "user-service-api"
+            userOrg = "boards-project"
+            licenses = ["Apache-2.0"]
+            vcsUrl = "https://github.com/boards-project/user-service.git"
+            version {
+                name = project.version
+                vcsTag = "v${project.version}"
+            }
+        }
+    }
+
+    bintrayUpload.doLast {
+        println("Uploaded $project.name version $project.version")
+    }
+
+    bintrayUpload.dependsOn build
+}
