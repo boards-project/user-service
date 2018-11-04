@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package org.boardproject.userservice.api;
+
+service UserService {
+  rpc FindAll (FindAllRequest) returns (stream UserReply);
+
+  rpc FindOne (FindOneRequest) returns (UserReply);
+}
+
+message FindAllRequest {
+
+}
+
+message FindOneRequest {
+  string id = 1;
+}
+
+message UserReply {
+  string id = 1;
+  string username = 2;
+}
