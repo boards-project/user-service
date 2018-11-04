@@ -1,5 +1,5 @@
 subprojects {
-    group = "org.board-project.userservice"
+    group = "org.board-project.user-service"
     
     repositories {
         mavenCentral()
