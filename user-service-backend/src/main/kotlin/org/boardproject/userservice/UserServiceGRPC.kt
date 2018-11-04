@@ -4,11 +4,11 @@ import org.boardproject.userservice.api.FindAllRequest
 import org.boardproject.userservice.api.FindOneRequest
 import org.boardproject.userservice.api.ReactorUserServiceGrpc
 import org.boardproject.userservice.api.UserReply
-import org.springframework.stereotype.Service
+import org.lognet.springboot.grpc.GRpcService
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-@Service
+@GRpcService
 data class UserServiceGRPC(
         private val userRepository: UserRepository,
         private val userReplyTranslator: UserReplyTranslator
