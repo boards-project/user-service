@@ -1,10 +1,9 @@
-package org.boardproject.userservice.grpc
+package org.boardproject.userservice
 
 import org.boardproject.userservice.api.FindAllRequest
 import org.boardproject.userservice.api.FindOneRequest
 import org.boardproject.userservice.api.ReactorUserServiceGrpc
 import org.boardproject.userservice.api.UserReply
-import org.boardproject.userservice.repository.UserRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono

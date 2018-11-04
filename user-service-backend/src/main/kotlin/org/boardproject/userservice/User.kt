@@ -1,4 +1,4 @@
-package org.boardproject.userservice.model
+package org.boardproject.userservice
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

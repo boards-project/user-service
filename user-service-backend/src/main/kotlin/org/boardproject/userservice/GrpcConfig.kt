@@ -1,4 +1,4 @@
-package org.boardproject.userservice.grpc
+package org.boardproject.userservice
 
 import io.grpc.BindableService
 import io.grpc.Server

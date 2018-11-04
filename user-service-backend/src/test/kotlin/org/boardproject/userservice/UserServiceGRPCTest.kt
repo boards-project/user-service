@@ -1,16 +1,17 @@
-package org.boardproject.userservice.grpc
+package org.boardproject.userservice
 
 import io.grpc.ManagedChannel
 import io.grpc.Server
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import org.assertj.core.api.Assertions
+import org.boardproject.userservice.UserServiceGRPC
 import org.boardproject.userservice.api.FindAllRequest
 import org.boardproject.userservice.api.FindOneRequest
 import org.boardproject.userservice.api.UserReply
 import org.boardproject.userservice.api.UserServiceGrpc
-import org.boardproject.userservice.model.User
-import org.boardproject.userservice.repository.UserRepository
+import org.boardproject.userservice.User
+import org.boardproject.userservice.UserRepository
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
