@@ -1,8 +1,0 @@
----
-applications:
-- name: user-service
-  memory: 1024M
-  buildpack: java_buildpack
-  path: build/libs/user-service.jar
-  instances: 1
-  random-route: true
