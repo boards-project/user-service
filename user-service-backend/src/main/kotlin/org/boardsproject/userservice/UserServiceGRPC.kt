@@ -1,9 +1,9 @@
 package org.boardsproject.userservice
 
-import org.boardproject.userservice.api.FindAllRequest
-import org.boardproject.userservice.api.FindOneRequest
-import org.boardproject.userservice.api.ReactorUserServiceGrpc
-import org.boardproject.userservice.api.UserReply
+import org.boardsproject.userservice.api.FindAllRequest
+import org.boardsproject.userservice.api.FindOneRequest
+import org.boardsproject.userservice.api.ReactorUserServiceGrpc
+import org.boardsproject.userservice.api.UserReply
 import org.lognet.springboot.grpc.GRpcService
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono

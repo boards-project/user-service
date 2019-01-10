@@ -6,10 +6,10 @@ import io.grpc.Server
 import io.grpc.inprocess.InProcessChannelBuilder
 import io.grpc.inprocess.InProcessServerBuilder
 import org.assertj.core.api.Assertions
-import org.boardproject.userservice.api.FindAllRequest
-import org.boardproject.userservice.api.FindOneRequest
-import org.boardproject.userservice.api.UserReply
-import org.boardproject.userservice.api.UserServiceGrpc
+import org.boardsproject.userservice.api.FindAllRequest
+import org.boardsproject.userservice.api.FindOneRequest
+import org.boardsproject.userservice.api.UserReply
+import org.boardsproject.userservice.api.UserServiceGrpc
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

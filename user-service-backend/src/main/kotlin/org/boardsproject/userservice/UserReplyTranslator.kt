@@ -1,6 +1,6 @@
 package org.boardsproject.userservice
 
-import org.boardproject.userservice.api.UserReply
+import org.boardsproject.userservice.api.UserReply
 import org.springframework.stereotype.Service
 
 interface UserReplyTranslator {
