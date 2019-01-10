@@ -1,4 +1,4 @@
-package org.boardproject.userservice
+package org.boardsproject.userservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

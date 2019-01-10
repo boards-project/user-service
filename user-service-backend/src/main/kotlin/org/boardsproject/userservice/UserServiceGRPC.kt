@@ -1,4 +1,4 @@
-package org.boardproject.userservice
+package org.boardsproject.userservice
 
 import org.boardproject.userservice.api.FindAllRequest
 import org.boardproject.userservice.api.FindOneRequest

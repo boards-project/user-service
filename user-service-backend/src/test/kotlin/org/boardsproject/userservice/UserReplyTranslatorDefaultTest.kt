@@ -1,4 +1,4 @@
-package org.boardproject.userservice
+package org.boardsproject.userservice
 
 import org.assertj.core.api.Assertions.assertThat
 import org.boardproject.userservice.api.UserReply

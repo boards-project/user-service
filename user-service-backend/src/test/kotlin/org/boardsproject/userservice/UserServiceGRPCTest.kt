@@ -1,4 +1,4 @@
-package org.boardproject.userservice
+package org.boardsproject.userservice
 
 import com.nhaarman.mockitokotlin2.any
 import io.grpc.ManagedChannel
