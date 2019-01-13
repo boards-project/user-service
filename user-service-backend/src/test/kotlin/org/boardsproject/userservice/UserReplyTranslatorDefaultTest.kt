@@ -15,7 +15,7 @@ class UserReplyTranslatorDefaultTest {
     }
 
     @Test
-    fun translate_should_convertUserToUserReply() {
+    fun `translate should convert User to UserReply`() {
         val user = User("12345", "eugene.karanda")
         assertThat(subject.translate(user))
                 .isEqualTo(
